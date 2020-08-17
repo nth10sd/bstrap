@@ -2,11 +2,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-"""Initialize the package."""
+"""Module details."""
 
-import inspect
-
-from bstrap.start import *  # noqa: F401,F403
-
-__all__ = [name for name, obj in locals().items()
-           if not (name.startswith("_") or inspect.ismodule(obj))]
+__title__ = "REPLACEME"
+__version__ = "0.0.1"
+__author__ = "REPLACEME"
+__license__ = "MPL 2.0"
+__copyright__ = "Copyright 2020 REPLACEME"

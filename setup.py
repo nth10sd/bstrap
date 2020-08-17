@@ -15,7 +15,6 @@ from setuptools import setup
 
 EXTRAS = {
     "test": [
-        # "codecov==2.0.15",
         "coverage>=5.2.1,<5.3",
         "flake8==3.8.3",
         "flake8-commas>=2.0.0,<2.1",
@@ -29,16 +28,17 @@ EXTRAS = {
         "pytest-flake8>=1.0.6,<1.1",
         "pytest-mypy>=0.6.2,<0.7",
         "pytest-pylint>=0.17.0,<0.18",
+        "sphinx==3.2.1",
     ]}
 
 setup(
     name="bstrap",
     version="0.0.1",
-    url="https://github.com/nth10sd/py38bootstrap.git",
-    license="MPL2",
+    url="REPLACEME",
+    license="MPL 2.0",
 
-    author="Gary Kwong",
-    author_email="nth10sd@gmail.com",
+    author="REPLACEME",
+    author_email="REPLACEME",
 
     description="Bootstrap a project easily",
     # long_description=read("README.rst"),
