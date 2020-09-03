@@ -6,12 +6,7 @@
 
 import logging
 
-RUN_LOG = logging.getLogger("run_log")
-logging.basicConfig(
-    format="%(asctime)s %(name)-8s %(levelname)-8s {%(module)s} [%(funcName)s] %(message)s",
-    datefmt="%m-%d %H:%M:%S", level=logging.INFO,
-)
-logging.getLogger("flake8").setLevel(logging.ERROR)
+UTIL_RUN_LOG = logging.getLogger("util_run_log")
 
 
 def add_one(inp: int) -> int:
@@ -20,4 +15,5 @@ def add_one(inp: int) -> int:
     :param inp: Input number
     :return: Input added one
     """
+    UTIL_RUN_LOG.info("Adding one...")
     return inp + 1
