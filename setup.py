@@ -15,20 +15,20 @@ from setuptools import setup
 
 EXTRAS = {
     "test": [
-        "coverage>=5.2.1,<5.3",
-        "flake8==3.8.3",
-        "flake8-commas>=2.0.0,<2.1",
-        "flake8-isort>=3.0.1,<3.1",
-        "flake8-quotes>=3.2.0,<3.3",
-        "isort==4.3.21",
-        "mypy==0.782",
-        "pylint>=2.5.3,<2.6",
-        "pytest>=5.4.3,<5.5",
-        "pytest-cov>=2.10.0,<2.11",
-        "pytest-flake8>=1.0.6,<1.1",
-        "pytest-mypy>=0.6.2,<0.7",
-        "pytest-pylint>=0.17.0,<0.18",
-        "sphinx==3.2.1",
+        "coverage ~= 5.2.1",
+        "flake8 == 3.8.3",
+        "flake8-commas ~= 2.0.0",
+        "flake8-isort ~= 4.0.0",
+        "flake8-quotes ~= 3.2.0",
+        "isort ~= 5.5.1",
+        "mypy == 0.782",
+        "pylint ~= 2.6.0",
+        "pytest ~= 6.0.1",
+        "pytest-cov ~= 2.10.1",
+        "pytest-flake8 ~= 1.0.6",
+        "pytest-mypy ~= 0.7.0",
+        "pytest-pylint ~= 0.17.0",
+        "sphinx ~= 3.2.1",
     ]}
 
 setup(
@@ -55,7 +55,7 @@ setup(
         # "<dependency>",
     ],
     extras_require=EXTRAS,
-    python_requires=">=3.8",
+    python_requires=">= 3.8",
     zip_safe=False,
 
     classifiers=[
