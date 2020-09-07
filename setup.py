@@ -47,9 +47,9 @@ setup(
     #     "console_scripts": ["bstrap = bstrap.start:main"],
     # },
     packages=find_packages(exclude=("tests",)),
-    # package_data={"bstrap": [
-    #     "<relative path to non-Python files>/*",
-    # ]},
+    package_data={"bstrap": [
+        "py.typed",
+    ]},
 
     install_requires=[
         # "<dependency>",
