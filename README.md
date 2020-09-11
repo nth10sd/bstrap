@@ -18,15 +18,19 @@ Running in the above venv:
 ```
 (venv-new) $ git clone git@github.com:nth10sd/bstrap.git
 
-(venv-new) $ git clone <link to new empty repo>
+(venv-new) $ git clone REPLACEME
+                       ^^^^^^^^^
 
-(venv-new) $ cd <new repo>
+(venv-new) $ cd REPLACEME
+                ^^^^^^^^^
 
 (venv-new) $ cp -r ../bstrap/* ../bstrap/.gitignore .
 
-(venv-new) $ mv bstrap/ <new module name>
+(venv-new) $ mv bstrap/ REPLACEME
+                        ^^^^^^^^^
 
-(venv-new) $ find . ! \( -path ./.git -prune \) -type f | xargs sed -i 's/bstrap/<new module name>/g'
+(venv-new) $ find . ! \( -path ./.git -prune \) -type f | xargs sed -i 's/bstrap/REPLACEME/g'
+                                                                                 ^^^^^^^^^
 ```
 
 Install your module by running:
@@ -38,5 +42,6 @@ Install your module by running:
 Run your new module using:
 
 ```
-(venv-new) $ python3 -u -m <new module name>
+(venv-new) $ python3 -u -m REPLACEME
+                           ^^^^^^^^^
 ```
