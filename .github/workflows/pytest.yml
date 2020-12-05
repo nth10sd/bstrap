@@ -63,6 +63,12 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-pip-
 
+    - name: Install OS prerequisites
+      run: sudo apt-get install ripgrep
+    - name: Search for existing linter ignore lines and lines importing the Any type
+      run: |
+        rg -t py --stats "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa)| Any)" $(sed -n 's/name *= *"\(.*\)",/\1/p' < setup.py)
+
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
