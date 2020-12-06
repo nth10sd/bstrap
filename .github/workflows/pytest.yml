@@ -67,10 +67,12 @@ jobs:
       run: sudo apt-get install ripgrep
     # - name: Search for existing linter ignore lines in Python
     #   run: |
-    #     rg -t py --stats "(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])" $(sed -n 's/name *= *"\(.*\)",/\1/p' < setup.py) || true
+    #     rg -t py --stats "(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])" \
+    #       $(sed -n 's/name *= *"\(.*\)",/\1/p' < setup.py) || true
     - name: Search for existing linter ignore lines in Python and lines importing the Any type
       run: |
-        rg -t py --stats "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])| Any)" $(sed -n 's/name *= *"\(.*\)",/\1/p' < setup.py) || true
+        rg -t py --stats "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])| Any)" \
+          $(sed -n 's/name *= *"\(.*\)",/\1/p' < setup.py) || true
 
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
