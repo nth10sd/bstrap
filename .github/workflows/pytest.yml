@@ -73,6 +73,13 @@ jobs:
       run: |
         rg -t py --stats "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])| Any)" \
           $(sed -n 's/name *= *"\(.*\)",/\1/p' < setup.py) || true
+    - name: Check that we are not increasing the number of ignore lines as a general guideline
+      run: |
+        if [[ $(rg -t py --stats "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])| Any)" \
+                  $(sed -n 's/name *= *"\(.*\)",/\1/p' < setup.py) \
+                    | awk '/ matches/ && !/ contained matches/' \
+                    | cut -d' ' -f1) < 0 ]] ;
+        then exit 0 ; else exit 1 ; fi ;
 
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
