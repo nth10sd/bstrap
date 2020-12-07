@@ -9,18 +9,22 @@ class LOSDeviceError(Exception):
     """Error class unique to LOSDevice objects."""
 
 
-class LOSDevice:  # pylint: disable=too-few-public-methods
-    """This object represents a device that supports Lineage OS."""
+class LOSDevice:
+    """This object represents a device that supports Lineage OS.
 
-    def __init__(self) -> None:
-        pass
+    :param new_type: This is a new type for LOSDevice
+    """
 
-    # @classmethod
-    # def main(cls) -> None:
-    #     """Main function of LOSDevice class.
-    #     """
+    def __init__(self, new_type: str):
+        self.new_type = new_type
 
-    # @staticmethod
-    # def compile() -> None:
-    #     """Build a shell
-    #     """
+    @classmethod
+    def main(cls) -> None:
+        """Main function of LOSDevice class.
+        """
+        cls.new_type = cls.new_type + " compiled"
+
+    @staticmethod
+    def compile() -> None:
+        """Build a shell
+        """

@@ -11,11 +11,11 @@ class OP3TError(Exception):
     """Error class unique to OP3T objects."""
 
 
-class OP3T(LOSDevice):  # pylint: disable=too-few-public-methods
+class OP3T(LOSDevice):
     """OnePlus 3T object."""
 
-    # def __init__(self) -> None:
-    #     super().__init__()
+    def __init__(self) -> None:
+        super().__init__("")
 
     # @classmethod
     # def main(cls) -> None:

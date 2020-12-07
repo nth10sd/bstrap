@@ -19,6 +19,6 @@ logging.getLogger("filelock").setLevel(logging.WARNING)
 
 def main() -> None:
     """main function"""
-    LOSDevice()
+    LOSDevice("NewType")
     RUN_LOG.warning(add_one(2))
     RUN_LOG.error("foo")
