@@ -132,19 +132,19 @@ enable=apply-builtin,
 
 # Whether to accept totally missing parameter documentation in the docstring of
 # a function that has parameters.
-accept-no-param-doc=yes
+accept-no-param-doc=no
 
 # Whether to accept totally missing raises documentation in the docstring of a
 # function that raises an exception.
-accept-no-raise-doc=yes
+accept-no-raise-doc=no
 
 # Whether to accept totally missing return documentation in the docstring of a
 # function that returns a statement.
-accept-no-return-doc=yes
+accept-no-return-doc=no
 
 # Whether to accept totally missing yields documentation in the docstring of a
 # generator.
-accept-no-yields-doc=yes
+accept-no-yields-doc=no
 
 [REPORTS]
 # Activate the evaluation score.
