@@ -22,9 +22,9 @@ class LOSDevice:
     def main(cls) -> None:
         """Main function of LOSDevice class.
         """
-        cls.new_type = cls.new_type + " compiled"
 
     @staticmethod
-    def compile() -> None:
+    def compile() -> str:
         """Build a shell
         """
+        return "FOO"
