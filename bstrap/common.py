@@ -26,5 +26,7 @@ class LOSDevice:
     @staticmethod
     def compile() -> str:
         """Build a shell
+
+        :return: A testing string
         """
         return "FOO"
