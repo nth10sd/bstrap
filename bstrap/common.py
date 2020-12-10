@@ -4,6 +4,8 @@
 
 """Define objects common to all devices."""
 
+from __future__ import annotations
+
 
 class LOSDeviceError(Exception):
     """Error class unique to LOSDevice objects."""

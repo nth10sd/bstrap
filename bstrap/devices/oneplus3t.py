@@ -4,6 +4,8 @@
 
 """Code related to a OnePlus 3T."""
 
+from __future__ import annotations
+
 from bstrap.common import LOSDevice
 
 

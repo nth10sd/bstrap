@@ -4,6 +4,8 @@
 
 """start.py"""
 
+from __future__ import annotations
+
 import logging
 
 from bstrap.common import LOSDevice

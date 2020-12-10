@@ -4,6 +4,8 @@
 
 """Tests for start.py"""
 
+from __future__ import annotations
+
 from bstrap import start
 
 
