@@ -16,9 +16,9 @@ import os
 import sys
 from typing import List
 
-sys.path.insert(0, os.path.abspath("../.."))
+import bstrap
 
-import bstrap  # noqa: E402,I001
+sys.path.insert(0, os.path.abspath("../.."))
 
 # -- Project information -----------------------------------------------------
 
