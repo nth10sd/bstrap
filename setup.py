@@ -15,11 +15,11 @@ from setuptools import setup
 
 EXTRAS = {
     "test": [
-        "coverage ~= 5.3",
+        "coverage ~= 5.3.1",
         "flake8==3.8.4",
         "flake8-bugbear ~= 20.11.1",
         "flake8-commas ~= 2.0.0",
-        "flake8-comprehensions ~= 3.3.0",
+        "flake8-comprehensions ~= 3.3.1",
         "flake8-isort ~= 4.0.0",
         "flake8-quotes ~= 3.2.0",
         "isort ~= 5.6.4",
@@ -28,10 +28,10 @@ EXTRAS = {
         "pylint ~= 2.6.0",
         "pytest ~= 6.1.2",
         "pytest-cov ~= 2.10.1",
-        "pytest-flake8 ~= 1.0.6",
+        "pytest-flake8 ~= 1.0.7",
         "pytest-mypy ~= 0.8.0",
         "pytest-pylint ~= 0.18.0",
-        "sphinx ~= 3.3.1",
+        "sphinx ~= 3.4.1",
     ]}
 
 setup(

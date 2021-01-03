@@ -68,12 +68,12 @@ jobs:
     - name: Search for existing linter ignore lines in Python
       run: |
         rg -t py --stats "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])| Any|REPLACEME)" \
-          $(find . -type f -name "*.py") || true
+          $(find . -type f -name "*.py" ! -name "conf_correct.py") || true
     - name: Check that we are not increasing the number of ignore lines as a general guideline
       run: |
         if [ $(rg -t py --stats \
                   "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])| Any|REPLACEME)" \
-                  $(find . -type f -name "*.py") \
+                  $(find . -type f -name "*.py" ! -name "conf_correct.py") \
                     | awk '/ matches/ && !/ contained matches/' \
                     | cut -d' ' -f1) -lt 9 ] ;
         then exit 0 ; else exit 1 ; fi ;
