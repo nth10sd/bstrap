@@ -6,17 +6,14 @@
 
 from __future__ import annotations
 
-import logging
+from logging import INFO as INFO_LOG_LEVEL
 
 from bstrap.common import LOSDevice
+from bstrap.util.logging import get_logger
 from bstrap.util.utils import add_one
 
-RUN_LOG = logging.getLogger("run_log")
-logging.basicConfig(
-    format="%(asctime)s %(name)-8s %(levelname)-8s {%(module)s} [%(funcName)s] %(message)s",
-    datefmt="%m-%d %H:%M:%S", level=logging.INFO,
-)
-logging.getLogger("filelock").setLevel(logging.WARNING)
+RUN_LOG = get_logger(__name__)
+RUN_LOG.setLevel(INFO_LOG_LEVEL)
 
 
 def main() -> None:
