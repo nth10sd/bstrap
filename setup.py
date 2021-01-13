@@ -4,8 +4,23 @@
 
 """setuptools install script"""
 
+from pathlib import Path
+
 from setuptools import find_packages
 from setuptools import setup
+
+MODULE_NAME = "bstrap"
+
+INIT_FILE = "__init__.py"
+VERSION_INDICATOR = "__version__"  # This sets the version in INIT_FILE
+
+with open((Path(MODULE_NAME) / INIT_FILE).expanduser().resolve(), "r") as f:  # Look in module's __init__ for __version__
+    for line in f:
+        if line.startswith(VERSION_INDICATOR):
+            MODULE_VER = line.split("=", 1)[1].strip()[1:-1]  # Excl start/end quotes, use remove[pre|suf]fix on Python 3.9+
+            break
+    if not MODULE_VER:
+        raise ValueError(f"{VERSION_INDICATOR} is not defined in {MODULE_NAME}/{INIT_FILE}")
 
 # def read(filename):
 #     filename = os.path.join(os.path.dirname(__file__), filename)
@@ -35,8 +50,8 @@ EXTRAS = {
     ]}
 
 setup(
-    name="bstrap",
-    version="0.0.1",
+    name=MODULE_NAME,
+    version=MODULE_VER,
     url="REPLACEME",
     license="MPL 2.0",
 
@@ -47,10 +62,10 @@ setup(
     # long_description=read("README.rst"),
 
     # entry_points={
-    #     "console_scripts": ["bstrap = bstrap.start:main"],
+    #     "console_scripts": [f"{MODULE_NAME} = {MODULE_NAME}.start:main"],
     # },
     packages=find_packages(exclude=("tests",)),
-    package_data={"bstrap": [
+    package_data={MODULE_NAME: [
         "py.typed",
     ]},
 
