@@ -30,23 +30,25 @@ with open((Path(MODULE_NAME) / INIT_FILE).expanduser().resolve(), "r") as f:  # 
 
 EXTRAS = {
     "test": [
-        "coverage ~= 5.3.1",
+        "coverage ~= 5.4",
         "flake8==3.8.4",
         "flake8-bugbear ~= 20.11.1",
         "flake8-commas ~= 2.0.0",
         "flake8-comprehensions ~= 3.3.1",
         "flake8-isort ~= 4.0.0",
+        "flake8-print ~= 4.0.0",
         "flake8-quotes ~= 3.2.0",
-        "isort ~= 5.6.4",
-        "mypy==0.790",
+        "isort ~= 5.7.0",
+        "mypy==0.800",
         "pep8-naming ~= 0.11.1",
         "pylint ~= 2.6.0",
-        "pytest ~= 6.1.2",
-        "pytest-cov ~= 2.10.1",
+        "pytest ~= 6.2.2",
+        "pytest-cov ~= 2.11.1",
+        "pytest-dependency ~= 0.5.1",
         "pytest-flake8 ~= 1.0.7",
         "pytest-mypy ~= 0.8.0",
         "pytest-pylint ~= 0.18.0",
-        "sphinx ~= 3.4.1",
+        "sphinx ~= 3.4.3",
     ]}
 
 setup(
