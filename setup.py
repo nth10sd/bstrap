@@ -15,7 +15,8 @@ INIT_FILE = "__init__.py"
 VERSION_INDICATOR = "__version__"  # This sets the version in INIT_FILE
 
 with open(
-    (Path(MODULE_NAME) / INIT_FILE).expanduser().resolve(), "r",
+    (Path(MODULE_NAME) / INIT_FILE).expanduser().resolve(),
+    "r",
 ) as f:  # Look in module's __init__ for __version__
     for line in f:
         if line.startswith(VERSION_INDICATOR):
@@ -49,35 +50,33 @@ EXTRAS = {
         "pytest-mypy ~= 0.8.0",
         "pytest-pylint ~= 0.18.0",
         "sphinx ~= 3.4.3",
-    ]}
+    ],
+}
 
 setup(
     name=MODULE_NAME,
     version=MODULE_VER,
     url="REPLACEME",
     license="MPL 2.0",
-
     author="REPLACEME",
     author_email="REPLACEME",
-
     description="Bootstrap a project easily",
     # long_description=read("README.rst"),
-
     # entry_points={
     #     "console_scripts": [f"{MODULE_NAME} = {MODULE_NAME}.start:main"],
     # },
     packages=find_packages(exclude=("tests",)),
-    package_data={MODULE_NAME: [
-        "py.typed",
-    ]},
-
+    package_data={
+        MODULE_NAME: [
+            "py.typed",
+        ]
+    },
     install_requires=[
         # "<dependency>",
     ],
     extras_require=EXTRAS,
     python_requires=">= 3.8",
     zip_safe=False,
-
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",

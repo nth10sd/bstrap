@@ -22,8 +22,7 @@ class LOSDevice:
 
     @classmethod
     def main(cls) -> None:
-        """Main function of LOSDevice class.
-        """
+        """Main function of LOSDevice class."""
 
     @staticmethod
     def compile() -> str:
