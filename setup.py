@@ -69,7 +69,7 @@ setup(
     package_data={
         MODULE_NAME: [
             "py.typed",
-        ]
+        ],
     },
     install_requires=[
         # "<dependency>",
