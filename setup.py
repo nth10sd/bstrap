@@ -28,6 +28,7 @@ with open(
 
 EXTRAS = {
     "test": [
+        "black ~= 20.8b1",
         "coverage ~= 5.4",
         "flake8==3.8.4",
         "flake8-bugbear ~= 20.11.1",
@@ -41,6 +42,7 @@ EXTRAS = {
         "pep8-naming ~= 0.11.1",
         "pylint ~= 2.6.0",
         "pytest ~= 6.2.2",
+        "pytest-black ~= 0.3.12",
         "pytest-cov ~= 2.11.1",
         "pytest-dependency ~= 0.5.1",
         "pytest-flake8 ~= 1.0.7",
