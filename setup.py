@@ -30,7 +30,7 @@ with open(
 EXTRAS = {
     "test": [
         "black ~= 20.8b1",
-        "coverage ~= 5.4",
+        "coverage ~= 5.5",
         "flake8==3.8.4",
         "flake8-bugbear ~= 20.11.1",
         "flake8-commas ~= 2.0.0",
@@ -39,9 +39,9 @@ EXTRAS = {
         "flake8-print ~= 4.0.0",
         "flake8-quotes ~= 3.2.0",
         "isort ~= 5.7.0",
-        "mypy==0.800",
+        "mypy==0.812",
         "pep8-naming ~= 0.11.1",
-        "pylint ~= 2.6.0",
+        "pylint ~= 2.7.2",
         "pytest ~= 6.2.2",
         "pytest-black ~= 0.3.12",
         "pytest-cov ~= 2.11.1",
