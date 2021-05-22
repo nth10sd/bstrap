@@ -11,13 +11,14 @@ on:
 jobs:
   build:
 
-    # runs-on: ${{ matrix.operating-system }}
+    runs-on: ${{ matrix.operating-system }}
     # Fixate to exact OS versions to avoid potential test failures over time
-    runs-on: ubuntu-20.04
+    # Uncomment this line if we are running on a solitary OS
+    # runs-on: ubuntu-20.04
     strategy:
       matrix:
         # Uncomment this line if we are running on multiple operating systems
-        # operating-system: [ubuntu-20.04, macos-10.15, windows-2019]
+        operating-system: [ubuntu-20.04, macos-10.15, windows-2019]
         python-version: [3.9]
 
     steps:
