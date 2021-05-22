@@ -6,10 +6,10 @@
 ## Prerequisites
 Create a new repository for your module on GitHub with no files.
 
-Create a new Python virtual environment using `venv` and switch to it.
+Create a new Python 3.9 (install it beforehand) virtual environment using `venv` and switch to it.
 
 ```
-$ python3 -u -m venv venv-new && source venv-new/bin/activate && pip install --upgrade pip setuptools wheel
+$ python3.9 -u -m venv venv-new && source venv-new/bin/activate && pip install --upgrade pip setuptools wheel
 ```
 
 ## Create a new module
@@ -25,7 +25,7 @@ Running in the above venv:
 (venv-new) $ cd REPLACEME
                 ^^^^^^^^^
 
-(venv-new) $ cp -r ../bstrap/* ../bstrap/.gitignore .
+(venv-new) $ cp -r ../bstrap/* ../bstrap/.gitignore ../bstrap/.coveragerc ../bstrap/.pylintrc .
 
 (venv-new) $ mv bstrap/ REPLACEME
                         ^^^^^^^^^
@@ -43,6 +43,6 @@ Install your module by running:
 Run your new module using:
 
 ```
-(venv-new) $ python3 -u -m REPLACEME
+(venv-new) $ python -u -m REPLACEME
                            ^^^^^^^^^
 ```
