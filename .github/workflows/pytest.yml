@@ -92,8 +92,7 @@ jobs:
         python -u -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
     - name: Run tools using pytest, and also non-slow tests under code coverage
       run: |
-        python -u -m pytest --bandit --black --flake8 --mypy --pylint -m "not slow" \
-          --cov --cov-report term-missing --no-cov-on-fail --cov-fail-under=80
+        python -u -m pytest --bandit --black --flake8 --mypy --pylint -m "not slow" --cov --cov-report term-missing --no-cov-on-fail --cov-fail-under=80
     # - name: Upload coverage report to codecov
     #   if: ${{ success() }}
     #   run: bash <(curl -s https://codecov.io/bash)
