@@ -8,9 +8,8 @@ from __future__ import annotations
 
 from bstrap.common import LOSDevice
 
-
-class OP6TError(Exception):
-    """Error class unique to OP6T objects."""
+# class OP6TError(Exception):
+#     """Error class unique to OP6T objects."""
 
 
 class OP6T(LOSDevice):

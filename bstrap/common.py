@@ -6,9 +6,8 @@
 
 from __future__ import annotations
 
-
-class LOSDeviceError(Exception):
-    """Error class unique to LOSDevice objects."""
+# class LOSDeviceError(Exception):
+#     """Error class unique to LOSDevice objects."""
 
 
 class LOSDevice:
