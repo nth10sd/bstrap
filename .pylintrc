@@ -3,6 +3,9 @@
 # Good variable names which should always be accepted, separated by a comma
 good-names=i,j,k,ex,Run,_,f,g
 
+[DESIGN]
+max-attributes=12
+
 [FORMAT]
 
 # Maximum number of characters on a single line.
@@ -151,6 +154,6 @@ accept-no-yields-doc=no
 score=no
 
 [SIMILARITIES]
-
+ignore-comments=no
 # Ignore imports when computing similarities.
 ignore-imports=yes
