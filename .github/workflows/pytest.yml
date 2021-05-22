@@ -93,6 +93,8 @@ jobs:
     - name: Run tools using pytest, and also non-slow tests under code coverage
       run: |
         python -u -m pytest --bandit --black --flake8 --mypy --pylint -m "not slow" --cov --cov-report term-missing --no-cov-on-fail --cov-fail-under=80
-    # - name: Upload coverage report to codecov
-    #   if: ${{ success() }}
-    #   run: bash <(curl -s https://codecov.io/bash)
+
+    - uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true # optional (default = false)
+        # verbose: true # optional (default = false)
