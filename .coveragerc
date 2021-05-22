@@ -6,7 +6,7 @@ omit =
     bstrap/__main__.py
 
 [report]
-# Taken from: https://coverage.readthedocs.io/en/coverage-5.2/config.html#syntax
+# Taken from: https://coverage.readthedocs.io/en/coverage-5.5/config.html#syntax
 # Regexes for lines to exclude from consideration
 exclude_lines =
     # Have to re-enable the standard pragma
