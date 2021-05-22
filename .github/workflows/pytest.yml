@@ -36,24 +36,20 @@ jobs:
         key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
         restore-keys: |
           ${{ runner.os }}-pip-
-    # When activating macOS, verify pip cache dir at
-    #     https://github.com/actions/cache/blob/main/examples.md
-    # - uses: actions/cache@v2
-    #   if: startsWith(runner.os, 'macOS')
-    #   with:
-    #     path: ~/Library/Caches/pip
-    #     key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-pip-
-    # When activating Windows, verify pip cache dir at
-    #     https://github.com/actions/cache/blob/main/examples.md
-    # - uses: actions/cache@v2
-    #   if: startsWith(runner.os, 'Windows')
-    #   with:
-    #     path: ~\AppData\Local\pip\Cache
-    #     key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-pip-
+    - uses: actions/cache@v2
+      if: startsWith(runner.os, 'macOS')
+      with:
+        path: ~/Library/Caches/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - uses: actions/cache@v2
+      if: startsWith(runner.os, 'Windows')
+      with:
+        path: ~\AppData\Local\pip\Cache
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
     - name: Get pip cache dir
       id: pip-cache
       run: |
