@@ -83,13 +83,15 @@ jobs:
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        python -u -m pip install --upgrade pip setuptools wheel
+        python -u -m pip install --upgrade pip setuptools wheel pyupgrade_directories
         pip install -r requirements.txt
 
     - name: Run with flake8 only checking for Python syntax errors or undefined names
       run: |
         # stop the build if there are Python syntax errors or undefined names
         python -u -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+    - name: Run with pyupgrade to find code that can be written in a more modern way
+      run: python -u -m pyup_dirs --py39-plus --recursive .
     - name: Run with vulture to find dead code
       run: python -u -m vulture bstrap/ tests/ .vulture_allowlist
     - name: Run tools using pytest, and also non-slow tests under code coverage
