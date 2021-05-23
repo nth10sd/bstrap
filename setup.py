@@ -16,7 +16,6 @@ VERSION_INDICATOR = "__version__"  # This sets the version in INIT_FILE
 
 with open(
     (Path(MODULE_NAME) / INIT_FILE).expanduser().resolve(),
-    "r",
 ) as f:  # Look in module's __init__ for __version__
     for line in f:
         if line.startswith(VERSION_INDICATOR):
