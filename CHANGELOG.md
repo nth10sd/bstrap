@@ -1,3 +1,10 @@
+# 1.1.0
+
+* Bump to Python 3.9 as a minimum version for new projects
+* Support more tools, such as pyupgrade and vulture for finding dead code
+* Turn on code coverage integration via GitHub Actions
+* Dependency version bumps
+
 # 1.0.1
 
 * Add CHANGELOG.md
