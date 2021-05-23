@@ -78,6 +78,7 @@ setup(
         # "<dependency>",
     ],
     extras_require=EXTRAS,
+    # Also version bump PyPI classifier, mypy settings, README, GitHub Actions settings
     python_requires=">= 3.9",
     zip_safe=False,
     classifiers=[
