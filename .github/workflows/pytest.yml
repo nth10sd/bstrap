@@ -99,5 +99,6 @@ jobs:
         python -u -m pytest --bandit --black --flake8 --mypy --pylint -m "not slow" --cov --cov-report term-missing --no-cov-on-fail --cov-fail-under=80
 
     - uses: codecov/codecov-action@v1
+      continue-on-error: true  # codecov limits number of uploads allowed for each commit
       with:
-        fail_ci_if_error: true # optional (default = false)
+        fail_ci_if_error: true  # optional (default = false)
