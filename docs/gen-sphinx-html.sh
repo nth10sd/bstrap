@@ -16,4 +16,4 @@ tr '\n' '\f' < source/index.rst | \
 mv source/index_new.rst source/index.rst;
 
 # Generate Sphinx HTML documentation
-sphinx-build -b html source/ build/html/;
+sphinx-build -W --keep-going -b html source/ build/html/;
