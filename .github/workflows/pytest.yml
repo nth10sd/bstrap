@@ -95,6 +95,7 @@ jobs:
     - name: Run with vulture to find dead code
       run: python -u -m vulture bstrap/ tests/ .vulture_allowlist
     - name: Ensure Sphinx docs always work, resetting Git repo after generation
+      if: startsWith(runner.os, 'Linux')
       run: pushd docs/ && ./gen-sphinx-html.sh ; git clean -fd ; popd
     - name: Run tools using pytest, and also non-slow tests under code coverage
       run: |
