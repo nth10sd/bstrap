@@ -25,7 +25,7 @@ jobs=3
 # List of plugins (as comma separated values of python modules names) to load,
 # usually to register additional checkers.
 #
-# Whole list retrieved on 2021-04-24 from: https://pylint.readthedocs.io/en/latest/technical_reference/extensions.html
+# Whole list retrieved on 2021-06-07 from: https://pylint.readthedocs.io/en/latest/technical_reference/extensions.html
 load-plugins=pylint.extensions.bad_builtin,
              pylint.extensions.broad_try_clause,
              pylint.extensions.check_elif,
@@ -33,10 +33,12 @@ load-plugins=pylint.extensions.bad_builtin,
              pylint.extensions.comparetozero,
              pylint.extensions.docparams,
              pylint.extensions.docstyle,
+             pylint.extensions.empty_comment,
              pylint.extensions.emptystring,
              pylint.extensions.mccabe,
              pylint.extensions.overlapping_exceptions,
-             pylint.extensions.redefined_variable_type
+             pylint.extensions.redefined_variable_type,
+             pylint.extensions.typing
 
 # Pickle collected data for later comparisons.
 persistent=no
@@ -157,3 +159,8 @@ score=no
 ignore-comments=no
 # Ignore imports when computing similarities.
 ignore-imports=yes
+
+[TYPING]
+# Min Python version to use for typing related checks, e.g. ``3.7``. This
+# should be equal to the min supported Python version of the project.
+py-version=3.9
