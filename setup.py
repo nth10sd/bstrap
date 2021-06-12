@@ -73,7 +73,7 @@ setup(
             "py.typed",
         ],
     },
-    install_requires=[
+    install_requires=[  # Include relevant types-* package, e.g. types-toml & toml
         # "<dependency>",
     ],
     extras_require=EXTRAS,
