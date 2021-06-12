@@ -1,0 +1,219 @@
+[build-system]
+requires = ["setuptools >= 57.0.0", "wheel >= 0.36.2"]
+build-backend = "setuptools.build_meta"
+
+# Update packages that do not have types in [[tool.mypy.overrides]]
+
+# When bumping minimum supported Python version, update:
+#   GitHub Actions settings file to also test the desired version
+#   setup.py, both install_requires and the classifiers
+# Ensure python_version under [tool.mypy] tests the desired version
+# Ensure py-version under [tool.pylint.typing] is set as the desired minimum version
+
+# Ensure source under [tool.coverage.run] includes the package name
+# Ensure bandit_targets under [tool.pytest.ini_options] is set as the package name
+
+[tool.coverage.run]
+omit = [
+    "*/__main__.py",
+    "*/build/*",
+    "*/dist/*",
+    "*/.tox/*",
+    "*/.egg/*",
+]
+source = [
+    "bstrap/",
+    "tests/",
+]
+
+[tool.coverage.report]
+# Taken from: https://coverage.readthedocs.io/en/coverage-5.5/config.html#syntax
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",  # Ignore missing debug-only code
+    "raise AssertionError",  # Ignore tests not hitting defensive assertion code
+    "raise NotImplementedError",  # Ignore tests not hitting defensive assertion code
+    "if 0:",  # Ignore non-runnable code not being run
+    "if __name__ == .__main__.:",  # Ignore non-runnable code not being run
+]
+fail_under = 80  # Minimum code coverage percent
+show_missing = true
+
+[tool.isort]
+force_single_line = true
+force_sort_within_sections = true
+line_length = 88
+profile = "black"
+
+[tool.pytest.ini_options]
+addopts = "--durations=10 --cache-clear"
+bandit_recurse = true
+# 1 = LOW, 2 = MEDIUM, 3 = HIGH is the scale for the bandit's conf and sev levels
+bandit_conf_level = 1
+bandit_sev_level = 1
+# Update the following line with the package name
+bandit_targets = "bstrap"
+markers = [
+    "slow",
+]
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+implicit_reexport = false
+namespace_packages = true
+no_implicit_optional = true
+python_version = 3.9
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = [
+    "setuptools",
+]
+ignore_missing_imports = true
+
+[tool.pylint.basic]
+# Good variable names which should always be accepted, separated by a comma
+good-names = ["i", "j", "k", "ex", "Run", "_", "f", "g"]
+
+[tool.pylint.design]
+max-attributes = 12
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.pylint.imports]
+allow-any-import-level = ["resource", "winreg"]
+
+[tool.pylint.master]
+# Use multiple processes to speed up Pylint.
+# Note that sometimes the duplicate-code checker runs properly only when set to 1
+jobs = 3
+# Whole list retrieved on 2021-06-07 from: https://pylint.readthedocs.io/en/latest/technical_reference/extensions.html
+load-plugins = [
+    "pylint.extensions.bad_builtin",
+    "pylint.extensions.broad_try_clause",
+    "pylint.extensions.check_elif",
+    "pylint.extensions.confusing_elif",
+    "pylint.extensions.comparetozero",
+    "pylint.extensions.docparams",
+    "pylint.extensions.docstyle",
+    "pylint.extensions.empty_comment",
+    "pylint.extensions.emptystring",
+    "pylint.extensions.mccabe",
+    "pylint.extensions.overlapping_exceptions",
+    "pylint.extensions.redefined_variable_type",
+    "pylint.extensions.typing",
+]
+# Pickle collected data for later comparisons
+persistent = "no"
+
+[tool.pylint.similarities]
+ignore-comments = "no"
+# Ignore imports when computing similarities
+ignore-imports = "yes"
+min-similarity-lines = 5
+
+[tool.pylint.messages_control]
+disable = [
+    "locally-disabled",
+    "no-absolute-import",
+    "old-division",
+    "suppressed-message",
+    "useless-suppression",
+]
+enable = [
+    "apply-builtin",
+    "backtick",
+    "bad-inline-option",
+    "bad-python3-import",
+    "basestring-builtin",
+    "buffer-builtin",
+    "c-extension-no-member",
+    "cmp-builtin",
+    "cmp-method",
+    "coerce-builtin",
+    "coerce-method",
+    "delslice-method",
+    "deprecated-itertools-function",
+    "deprecated-pragma",
+    "deprecated-str-translate-call",
+    "deprecated-string-function",
+    "deprecated-types-field",
+    "dict-items-not-iterating",
+    "dict-iter-method",
+    "dict-keys-not-iterating",
+    "dict-values-not-iterating",
+    "dict-view-method",
+    "div-method",
+    "eq-without-hash",
+    "exception-message-attribute",
+    "execfile-builtin",
+    "file-builtin",
+    "file-ignored",
+    "filter-builtin-not-iterating",
+    "getslice-method",
+    "hex-method",
+    "idiv-method",
+    "import-star-module-level",
+    "indexing-exception",
+    "input-builtin",
+    "intern-builtin",
+    "invalid-str-codec",
+    "long-builtin",
+    "long-suffix",
+    "map-builtin-not-iterating",
+    "metaclass-assignment",
+    "next-method-called",
+    "next-method-defined",
+    "non-ascii-bytes-literal",
+    "nonzero-method",
+    "oct-method",
+    "old-ne-operator",
+    "old-octal-literal",
+    "old-raise-syntax",
+    "parameter-unpacking",
+    "print-statement",
+    "raising-string",
+    "range-builtin-not-iterating",
+    "raw_input-builtin",
+    "raw-checker-failed",
+    "rdiv-method",
+    "reduce-builtin",
+    "reload-builtin",
+    "round-builtin",
+    "setslice-method",
+    "standarderror-builtin",
+    "sys-max-int",
+    "unichr-builtin",
+    "unicode-builtin",
+    "unpacking-in-except",
+    "using-cmp-argument",
+    "xrange-builtin",
+    "zip-builtin-not-iterating",
+]
+
+[tool.pylint.parameter_documentation]
+accept-no-param-doc = "no"
+accept-no-raise-doc = "no"
+accept-no-return-doc = "no"
+accept-no-yields-doc = "no"
+
+[tool.pylint.reports]
+# Activate the evaluation score
+score = "no"
+
+[tool.pylint.typing]
+# Min Python version to use for typing related checks, e.g. ``3.7``
+# This should be equal to the min supported Python version of the project
+py-version = "3.9"
