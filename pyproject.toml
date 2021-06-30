@@ -99,11 +99,12 @@ allow-any-import-level = ["resource", "winreg"]
 # Use multiple processes to speed up Pylint.
 # Note that sometimes the duplicate-code checker runs properly only when set to 1
 jobs = 3
-# Whole list retrieved on 2021-06-07 from: https://pylint.readthedocs.io/en/latest/technical_reference/extensions.html
+# Whole list retrieved on 2021-06-29 from: https://pylint.pycqa.org/en/latest/technical_reference/extensions.html
 load-plugins = [
     "pylint.extensions.bad_builtin",
     "pylint.extensions.broad_try_clause",
     "pylint.extensions.check_elif",
+    "pylint.extensions.code_style",
     "pylint.extensions.confusing_elif",
     "pylint.extensions.comparetozero",
     "pylint.extensions.docparams",
