@@ -46,7 +46,7 @@ line_length = 88
 profile = "black"
 
 [tool.pytest.ini_options]
-addopts = "--cache-clear --durations=7 --no-cov-on-fail"
+addopts = "--pylint-error-types=CRWEFI --cache-clear --durations=7 --no-cov-on-fail"
 bandit_recurse = true
 # 1 = LOW, 2 = MEDIUM, 3 = HIGH is the scale for the bandit's conf and sev levels
 bandit_conf_level = 1
@@ -100,14 +100,15 @@ allow-any-import-level = ["resource", "winreg"]
 # Use multiple processes to speed up Pylint.
 # Note that sometimes the duplicate-code checker runs properly only when set to 1
 jobs = 3
-# Whole list retrieved on 2021-06-29 from: https://pylint.pycqa.org/en/latest/technical_reference/extensions.html
+# Whole list retrieved on 2021-08-20 from: https://pylint.pycqa.org/en/latest/technical_reference/extensions.html
 load-plugins = [
     "pylint.extensions.bad_builtin",
     "pylint.extensions.broad_try_clause",
     "pylint.extensions.check_elif",
     "pylint.extensions.code_style",
-    "pylint.extensions.confusing_elif",
     "pylint.extensions.comparetozero",
+    "pylint.extensions.confusing_elif",
+    "pylint.extensions.consider_ternary_expression",
     "pylint.extensions.docparams",
     "pylint.extensions.docstyle",
     "pylint.extensions.empty_comment",
@@ -116,6 +117,7 @@ load-plugins = [
     "pylint.extensions.overlapping_exceptions",
     "pylint.extensions.redefined_variable_type",
     "pylint.extensions.typing",
+    "pylint.extensions.while_used",
 ]
 # Pickle collected data for later comparisons
 persistent = "no"
@@ -132,7 +134,6 @@ disable = [
     "no-absolute-import",
     "old-division",
     "suppressed-message",
-    "useless-suppression",
 ]
 enable = [
     "apply-builtin",
@@ -188,8 +189,8 @@ enable = [
     "print-statement",
     "raising-string",
     "range-builtin-not-iterating",
-    "raw_input-builtin",
     "raw-checker-failed",
+    "raw_input-builtin",
     "rdiv-method",
     "reduce-builtin",
     "reload-builtin",
@@ -200,6 +201,7 @@ enable = [
     "unichr-builtin",
     "unicode-builtin",
     "unpacking-in-except",
+    "useless-suppression",
     "using-cmp-argument",
     "xrange-builtin",
     "zip-builtin-not-iterating",
