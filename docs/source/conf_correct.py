@@ -1,6 +1,6 @@
-# pylint: disable=invalid-name,missing-module-docstring,wrong-import-position
+"""Configuration file for the Sphinx documentation builder."""
 
-# Configuration file for the Sphinx documentation builder.
+# pylint: disable=invalid-name
 
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
