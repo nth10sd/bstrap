@@ -39,7 +39,7 @@ EXTRAS = {
         "flake8-comprehensions ~= 3.6.1",
         "flake8-isort ~= 4.0.0",
         "flake8-print ~= 4.0.0",
-        "flake8-quotes ~= 3.2.0",
+        "flake8-quotes ~= 3.3.0",
         "isort ~= 5.9.1",
         "mypy==0.910",
         "pep8-naming ~= 0.12.1",
