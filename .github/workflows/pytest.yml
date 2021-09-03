@@ -93,6 +93,7 @@ jobs:
     - name: Run with pyupgrade to find code that can be written in a more modern way
       run: pyup_dirs --py39-plus --recursive .
     - name: Run with vulture to find dead code
+      if: startsWith(runner.os, 'Linux') || startsWith(runner.os, 'macOS')
       run: python -u -m vulture $(python -c "import subprocess; out = subprocess.run([\"rg\", \"MODULE_NAME =\", \"setup.py\"], capture_output=True).stdout.decode(\"utf-8\"); print(out.split(\" = \\\"\", maxsplit=1)[-1].rstrip().removesuffix(\"\\\"\") + \"/\")") tests/ .vulture_allowlist
     - name: Ensure Sphinx docs always work, resetting Git repo after generation
       if: startsWith(runner.os, 'Linux')
