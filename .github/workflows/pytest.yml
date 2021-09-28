@@ -83,7 +83,7 @@ jobs:
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        python -u -m pip install --upgrade pip setuptools wheel pyupgrade_directories
+        python -u -m pip install --upgrade pip setuptools wheel
         pip install -r requirements.txt
 
     - name: Run with flake8 only checking for Python syntax errors or undefined names

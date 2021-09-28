@@ -56,6 +56,7 @@ EXTRAS = {
         "pytest-flake8 ~= 1.0.7",
         "pytest-mypy ~= 0.8.1",
         "pytest-pylint ~= 0.18.0",
+        "pyupgrade-directories ~= 0.2.0",
         "sphinx ~= 4.2.0",
         "vulture ~= 2.3",
     ],
