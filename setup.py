@@ -32,7 +32,7 @@ EXTRAS = {
     "test": [
         "bandit ~= 1.7.0",
         "black ~= 21.9b0",
-        "coverage[toml] ~= 5.5",
+        "coverage[toml] ~= 6.0.1",
         "flake8 ~= 3.9.2",
         "flake8-bugbear ~= 21.9.2",
         "flake8-commas ~= 2.0.0",
@@ -81,7 +81,7 @@ setup(
         ],
     },
     install_requires=[  # Include relevant types-* package, e.g. types-toml & toml
-        # "<dependency>",
+        "types-setuptools ~= 57.4.0",
     ],
     extras_require=EXTRAS,
     # Also version bump PyPI classifier, mypy settings, README, GitHub Actions settings
