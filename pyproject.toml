@@ -77,8 +77,10 @@ warn_return_any = true
 warn_unused_configs = true
 warn_unused_ignores = true
 
-[[tool.mypy.overrides]]
-ignore_missing_imports = true
+# Add Python modules to be ignored by mypy here
+# [[tool.mypy.overrides]]
+# module = []
+# ignore_missing_imports = true
 
 [tool.pylint.basic]
 # Good variable names which should always be accepted, separated by a comma
