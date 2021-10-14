@@ -7,6 +7,7 @@ build-backend = "setuptools.build_meta"
 # When bumping minimum supported Python version, update:
 #   GitHub Actions settings file to also test the desired version
 #   setup.py, both install_requires and the classifiers
+#   tox.ini, under flake8 settings
 # Ensure python_version under [tool.mypy] tests the desired version
 # Ensure py-version under [tool.pylint.typing] is set as the desired minimum version
 
