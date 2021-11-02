@@ -50,3 +50,29 @@ Run your new module using:
 (venv-ls-py39) $ python -u -m REPLACEME
                               ^^^^^^^^^
 ```
+
+## Run tools on your package
+
+(All commands here must be run within the `venv`, in the main repository directory - not any subfolders)
+
+For linters only:
+```
+for TOOL in flake8 mypy pylint ; do "$TOOL" tests/ $(python -c "import subprocess; out = subprocess.run([\"rg\", \"MODULE_NAME =\", \"setup.py\"], capture_output=True).stdout.decode(\"utf-8\"); print(out.split(\" = \\\"\", maxsplit=1)[-1].rstrip().removesuffix(\"\\\"\") + \"/\")") ; done;
+```
+
+For comprehensive tests and all linters:
+```
+pytest --bandit --black --cov --flake8 --mypy --pylint
+```
+
+For comprehensive tests and all linters **except** slow tests:
+```
+pytest --bandit --black --cov --flake8 --mypy --pylint -m "not slow"
+```
+
+## Documentation generation via Sphinx
+
+* Change into `docs/` folder: `cd docs/`
+* Run generation command - you **must** first be in the `docs/` directory: `./gen-sphinx-html.sh`
+* Your generated HTML files are now in `docs/build/html/` directory
+* Open `index.html` to start
