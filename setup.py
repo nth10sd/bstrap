@@ -44,7 +44,7 @@ EXTRAS = {
         "flake8-quotes ~= 3.3.0",
         "flake8-return ~= 1.1.3",
         "flake8-typing-imports ~= 1.11.0",
-        "isort ~= 5.9.3",
+        "isort ~= 5.10.0",
         "mypy==0.910",
         "pep8-naming ~= 0.12.1",
         "pylint ~= 2.11.1",
