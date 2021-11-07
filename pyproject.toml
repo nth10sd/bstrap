@@ -69,7 +69,7 @@ disallow_untyped_defs = true
 implicit_reexport = false
 namespace_packages = true
 no_implicit_optional = true
-python_version = "3.9"
+python_version = "3.10"
 show_error_codes = true
 strict = true
 strict_equality = true
@@ -220,4 +220,4 @@ score = "no"
 [tool.pylint.typing]
 # Min Python version to use for typing related checks, e.g. ``3.7``
 # This should be equal to the min supported Python version of the project
-py-version = "3.9"
+py-version = "3.10"

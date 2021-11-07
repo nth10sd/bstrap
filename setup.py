@@ -86,7 +86,7 @@ setup(
     ],
     extras_require=EXTRAS,
     # Also version bump PyPI classifier, mypy settings, README, GitHub Actions settings
-    python_requires=">= 3.9",
+    python_requires=">= 3.10",
     zip_safe=False,
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
@@ -97,7 +97,7 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: Implementation :: CPython",
         "Topic :: Software Development :: Testing",
         "Topic :: Utilities",
