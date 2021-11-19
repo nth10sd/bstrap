@@ -31,8 +31,8 @@ with open(
 EXTRAS = {
     "test": [
         "bandit ~= 1.7.0",
-        "black ~= 21.10b0",
-        "coverage[toml] ~= 6.1.1",
+        "black ~= 21.11b1",
+        "coverage[toml] ~= 6.1.2",
         "flake8 ~= 4.0.1",
         "flake8-bugbear ~= 21.9.2",
         "flake8-comprehensions ~= 3.7.0",
@@ -44,7 +44,7 @@ EXTRAS = {
         "flake8-quotes ~= 3.3.0",
         "flake8-return ~= 1.1.3",
         "flake8-typing-imports ~= 1.11.0",
-        "isort ~= 5.10.0",
+        "isort ~= 5.10.1",
         "mypy==0.910",
         "pep8-naming ~= 0.12.1",
         "pylint ~= 2.11.1",
@@ -57,7 +57,7 @@ EXTRAS = {
         "pytest-mypy ~= 0.8.1",
         "pytest-pylint ~= 0.18.0",
         "pyupgrade-directories ~= 0.2.0",
-        "sphinx ~= 4.2.0",
+        "sphinx ~= 4.3.0",
         "vulture ~= 2.3",
     ],
 }
