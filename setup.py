@@ -32,7 +32,7 @@ EXTRAS = {
     "test": [
         "bandit ~= 1.7.0",
         "black ~= 21.11b1",
-        "coverage[toml] ~= 6.1.2",
+        "coverage[toml] ~= 6.2.0",
         "flake8 ~= 4.0.1",
         "flake8-bugbear ~= 21.9.2",
         "flake8-comprehensions ~= 3.7.0",
@@ -47,7 +47,7 @@ EXTRAS = {
         "isort ~= 5.10.1",
         "mypy==0.910",
         "pep8-naming ~= 0.12.1",
-        "pylint ~= 2.11.1",
+        "pylint ~= 2.12.1",
         "pytest ~= 6.2.5",
         "pytest-bandit ~= 0.6.1",
         "pytest-black ~= 0.3.12",
@@ -57,7 +57,8 @@ EXTRAS = {
         "pytest-mypy ~= 0.8.1",
         "pytest-pylint ~= 0.18.0",
         "pyupgrade-directories ~= 0.2.0",
-        "sphinx ~= 4.3.0",
+        "sphinx ~= 4.3.1",
+        "tryceratops ~= 1.0.0",
         "vulture ~= 2.3",
     ],
 }
