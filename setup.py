@@ -82,8 +82,10 @@ setup(
         ],
     },
     install_requires=[  # Include relevant types-* package, e.g. types-toml & toml
+        "setuptools ~= 60.0.3",
         "types-setuptools ~= 57.4.2",
         "types-toml ~= 0.10.1",  # Temporarily for infrastructure stuff of some packages
+        "wheel ~= 0.37.0",
     ],
     extras_require=EXTRAS,
     # Also version bump PyPI classifier, mypy settings, README, GitHub Actions settings
