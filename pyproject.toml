@@ -169,3 +169,57 @@ ignore = [
 ignore = [
     "TC003",
 ]
+
+#############
+# Briefcase #
+#############
+
+[tool.briefcase]
+project_name = "TempApp"
+bundle = "com.thisisnotavalidorganizationname"
+version = "0.0.1"
+url = "REPLACEME"
+license = "REPLACEME"
+author = "REPLACEME"
+author_email = "REPLACEME"
+
+[tool.briefcase.app.tempapp]
+formal_name = "TempApp"
+description = "Template generated from Briefcase 0.3.5"
+icon = "src/tempapp/resources/tempapp"
+sources = ["src/tempapp"]
+requires = []
+
+
+[tool.briefcase.app.tempapp.macOS]
+requires = [
+    "toga-cocoa>=0.3.0.dev20",
+]
+
+[tool.briefcase.app.tempapp.linux]
+requires = [
+    "toga-gtk>=0.3.0.dev20",
+]
+system_requires = [
+    "libgirepository1.0-dev",
+    "libcairo2-dev",
+    "libpango1.0-dev",
+    "libwebkitgtk-3.0-0",
+    "gir1.2-webkit-3.0",
+]
+
+[tool.briefcase.app.tempapp.windows]
+requires = [
+    "toga-winforms>=0.3.0.dev20",
+]
+
+# Mobile deployments
+[tool.briefcase.app.tempapp.iOS]
+requires = [
+    "toga-iOS>=0.3.0.dev20",
+]
+
+[tool.briefcase.app.tempapp.android]
+requires = [
+    "toga-android>=0.3.0.dev20",
+]
