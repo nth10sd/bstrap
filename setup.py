@@ -94,7 +94,9 @@ setup(
         ],
     },
     install_requires=[  # Include relevant types-* package, e.g. types-toml & toml
+        "briefcase==0.3.5",
         "setuptools >= 60.0.5",
+        "toga==0.3.0.dev30",  # For Briefcase 0.3.5
         "types-setuptools==65.3.0",  # Bump types-* only with mypy
         "types-toml==0.10.8",  # For (temp) infrastructure stuff of some packages
         "wheel >= 0.37.0",

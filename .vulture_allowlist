@@ -1,1 +1,3 @@
 cls  # First argument of a classmethod needs to have this name, according to pylint
+content  # For Briefcase 0.3.5
+startup  # For Briefcase 0.3.5

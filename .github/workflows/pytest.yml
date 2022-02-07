@@ -4,7 +4,7 @@ name: pytest
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, briefcase-support ]
   pull_request:
     branches: [ main ]
 
@@ -36,20 +36,20 @@ jobs:
         key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
         restore-keys: |
           ${{ runner.os }}-pip-
-    - uses: actions/cache@v2
-      if: startsWith(runner.os, 'macOS')
-      with:
-        path: ~/Library/Caches/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-    - uses: actions/cache@v2
-      if: startsWith(runner.os, 'Windows')
-      with:
-        path: ~\AppData\Local\pip\Cache
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
+    # - uses: actions/cache@v2
+    #   if: startsWith(runner.os, 'macOS')
+    #   with:
+    #     path: ~/Library/Caches/pip
+    #     key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-pip-
+    # - uses: actions/cache@v2
+    #   if: startsWith(runner.os, 'Windows')
+    #   with:
+    #     path: ~\AppData\Local\pip\Cache
+    #     key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-pip-
     - name: Get pip cache dir
       id: pip-cache
       run: |
@@ -64,7 +64,7 @@ jobs:
 
     - name: Install OS prerequisites
       if: startsWith(runner.os, 'Linux')
-      run: sudo apt-get update ; sudo apt-get install ripgrep
+      run: sudo apt-get update ; sudo apt-get install ripgrep python3-gi python3-gi-cairo libgirepository1.0-dev libcairo2-dev libpango1.0-dev libwebkit2gtk-4.0-37 gir1.2-webkit2-4.0
     - name: Search for existing linter ignore lines in Python
       if: startsWith(runner.os, 'Linux')
       run: |
@@ -77,7 +77,7 @@ jobs:
                   "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])| Any|REPLACEME)" \
                   $(find . -type f -name "*.py" ! -name "conf_correct.py") \
                     | awk "/ matches/ && "\!"/ contained matches/" \
-                    | cut -d" " -f1) -lt 8 ] ;
+                    | cut -d" " -f1) -lt 15 ] ;
         then exit 0 ; else exit 1 ; fi ;
 
     # - name: Use deploy key
@@ -123,7 +123,7 @@ jobs:
       run: python -u -m semgrep scan --severity=ERROR --strict --error --config auto
     - name: Run with vulture to find dead code
       if: startsWith(runner.os, 'Linux') || startsWith(runner.os, 'macOS')
-      run: python -u -m vulture $(python -c "import subprocess; out = subprocess.run([\"rg\", \"MODULE_NAME =\", \"setup.py\"], capture_output=True).stdout.decode(\"utf-8\"); print(out.split(\" = \\\"\", maxsplit=1)[-1].rstrip().removesuffix(\"\\\"\") + \"/\")") tests/ .vulture_allowlist
+      run: python -u -m vulture $(python -c "import subprocess; out = subprocess.run([\"rg\", \"MODULE_NAME =\", \"setup.py\"], capture_output=True).stdout.decode(\"utf-8\"); print(out.split(\" = \\\"\", maxsplit=1)[-1].rstrip().removesuffix(\"\\\"\") + \"/\")") src/ tests/ .vulture_allowlist
     - name: Ensure Sphinx docs always work, resetting Git repo after generation
       if: startsWith(runner.os, 'Linux')
       run: pushd docs/ && ./gen-sphinx-html.sh ; git clean -fd ; popd

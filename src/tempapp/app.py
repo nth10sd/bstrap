@@ -1,5 +1,4 @@
-"""
-Template generated from Briefcase 0.3.5, replace TempApp here with your desired name,
+"""Template generated from Briefcase 0.3.5, replace TempApp here with your desired name,
 as well as in __main__.py, rename the whole directory and icon files, then update
 pyproject.toml
 
@@ -10,15 +9,16 @@ Briefcase caches seem to be at:
 * `.gradle`
 """
 import toga
-from toga.style import Pack
-from toga.style.pack import COLUMN, ROW
+from toga.style import Pack  # noqa: F401  # pylint: disable=unused-import
+from toga.style.pack import COLUMN  # noqa: F401  # pylint: disable=unused-import
+from toga.style.pack import ROW  # noqa: F401  # pylint: disable=unused-import
 
 
-class TempApp(toga.App):
+class TempApp(toga.App):  # type: ignore[misc]
+    """Template App class."""
 
-    def startup(self):
-        """
-        Construct and show the Toga application.
+    def startup(self) -> None:
+        """Construct and show the Toga application.
 
         Usually, you would add your application to a main content box.
         We then create a main window (with a name matching the app), and
@@ -31,5 +31,9 @@ class TempApp(toga.App):
         self.main_window.show()
 
 
-def main():
+def main() -> TempApp:
+    """Main function.
+
+    :return: TempApp class
+    """
     return TempApp()
