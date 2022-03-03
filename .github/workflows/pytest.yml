@@ -64,7 +64,7 @@ jobs:
 
     - name: Install OS prerequisites
       if: startsWith(runner.os, 'Linux')
-      run: sudo apt-get install ripgrep
+      run: sudo apt-get update ; sudo apt-get install ripgrep
     - name: Search for existing linter ignore lines in Python
       if: startsWith(runner.os, 'Linux')
       run: |
