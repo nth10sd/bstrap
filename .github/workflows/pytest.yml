@@ -90,6 +90,12 @@ jobs:
       run: |
         # stop the build if there are Python syntax errors or undefined names
         python -u -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+    - name: Run with yesqa to find obsolete flake8 ignores
+      if: startsWith(runner.os, 'Linux')
+      run: find . -type f -name "*.py" -not -path "./build/*" | xargs yesqa
+    - name: Run with flynt to find old-style formatting strings that can be converted to f-strings
+      if: startsWith(runner.os, 'Linux')
+      run: flynt --dry-run --fail-on-change --transform-concats .
     - name: Run with pyupgrade to find code that can be written in a more modern way
       run: pyup_dirs --py310-plus --recursive .
     - name: Run with vulture to find dead code

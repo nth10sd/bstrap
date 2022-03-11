@@ -44,6 +44,7 @@ EXTRAS = {
         "flake8-quotes ~= 3.3.0",
         "flake8-return ~= 1.1.3",
         "flake8-typing-imports ~= 1.12.0",
+        "flynt ~= 0.76",
         "isort ~= 5.10.1",
         "mypy==0.931",
         "pep8-naming ~= 0.12.1",
@@ -60,6 +61,7 @@ EXTRAS = {
         "sphinx ~= 4.4.0",
         "tryceratops ~= 1.0.0",
         "vulture ~= 2.3",
+        "yesqa ~= 1.3.0",
     ],
 }
 
