@@ -46,7 +46,7 @@ EXTRAS = {
         "flake8-typing-imports ~= 1.12.0",
         "flynt ~= 0.76",
         "isort ~= 5.10.1",
-        "mypy==0.942",
+        "mypy==0.950",
         "pep8-naming ~= 0.12.1",
         "pylint ~= 2.13.7",
         "pytest ~= 6.2.5",
@@ -85,8 +85,8 @@ setup(
     },
     install_requires=[  # Include relevant types-* package, e.g. types-toml & toml
         "setuptools >= 60.0.5",
-        "types-setuptools >= 57.4.2",
-        "types-toml ~= 0.10.1",  # Temporarily for infrastructure stuff of some packages
+        "types-setuptools==57.4.14",  # Bump types-* only with mypy
+        "types-toml==0.10.6",  # For (temp) infrastructure stuff of some packages
         "wheel >= 0.37.0",
     ],
     extras_require=EXTRAS,
