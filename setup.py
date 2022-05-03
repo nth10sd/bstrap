@@ -48,7 +48,7 @@ EXTRAS = {
         "isort ~= 5.10.1",
         "mypy==0.950",
         "pep8-naming ~= 0.12.1",
-        "pylint ~= 2.13.7",
+        "pylint ~= 2.13.8",
         "pytest ~= 6.2.5",
         "pytest-bandit ~= 0.6.1",
         "pytest-black ~= 0.3.12",
