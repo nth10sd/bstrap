@@ -35,7 +35,7 @@ EXTRAS = {
         "coverage[toml] ~= 6.3.3",
         "flake8 ~= 4.0.1",
         "flake8-bugbear ~= 22.4.25",
-        "flake8-comprehensions ~= 3.9.0",
+        "flake8-comprehensions ~= 3.10.0",
         "flake8-isort ~= 4.1.1",
         "flake8-logging-format ~= 0.6.0",
         "flake8-print ~= 4.0.1",
@@ -60,7 +60,7 @@ EXTRAS = {
         "pyupgrade-directories ~= 0.2.0",
         "sphinx ~= 4.5.0",
         "tryceratops ~= 1.1.0",
-        "vulture ~= 2.3",
+        "vulture ~= 2.4",
         "yesqa ~= 1.3.0",
     ],
 }
