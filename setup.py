@@ -32,7 +32,7 @@ EXTRAS = {
     "test": [
         "bandit ~= 1.7.0",
         "black ~= 22.3.0",
-        "coverage[toml] ~= 6.3.3",
+        "coverage[toml] ~= 6.4",
         "flake8 ~= 4.0.1",
         "flake8-bugbear ~= 22.4.25",
         "flake8-comprehensions ~= 3.10.0",
