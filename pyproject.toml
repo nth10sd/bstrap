@@ -125,7 +125,6 @@ min-similarity-lines = 5
 disable = [
     "locally-disabled",
     "suppressed-message",
-    "use-symbolic-message-instead",
 ]
 enable = [
     "bad-inline-option",
@@ -134,6 +133,7 @@ enable = [
     "eq-without-hash",
     "file-ignored",
     "raw-checker-failed",
+    "use-symbolic-message-instead",
     "useless-suppression",
 ]
 
