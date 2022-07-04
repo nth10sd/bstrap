@@ -60,7 +60,7 @@ EXTRAS = {
         "pyupgrade-directories ~= 0.2.0",
         "sphinx ~= 5.0.1",
         "tryceratops ~= 1.1.0",
-        "vulture ~= 2.4",
+        "vulture ~= 2.5",
         "yesqa ~= 1.3.0",
     ],
 }
