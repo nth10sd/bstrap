@@ -47,7 +47,7 @@ line_length = 88
 profile = "black"
 
 [tool.pytest.ini_options]
-addopts = "--pylint-error-types=CRWEFI --cache-clear --durations=7 --no-cov-on-fail"
+addopts = "-n auto --pylint-error-types=CRWEFI --cache-clear --durations=7 --no-cov-on-fail"
 bandit_recurse = true
 # 1 = LOW, 2 = MEDIUM, 3 = HIGH is the scale for the bandit's conf and sev levels
 bandit_conf_level = 1

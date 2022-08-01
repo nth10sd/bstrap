@@ -61,6 +61,7 @@ EXTRAS = {
         "pytest-mypy ~= 0.9.1",
         "pytest-pylint ~= 0.18.0",
         "pytest-randomly ~= 3.12.0",
+        "pytest-xdist ~= 2.5.0",
         "pyupgrade-directories ~= 0.2.0",
         "sphinx ~= 5.1.1",
         "tryceratops ~= 1.1.0",
