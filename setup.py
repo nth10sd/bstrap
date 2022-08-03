@@ -67,7 +67,7 @@ EXTRAS = {
         "sphinx ~= 5.1.1",
         "tryceratops ~= 1.1.0",
         "vulture ~= 2.5",
-        "yesqa ~= 1.3.0",
+        "yesqa ~= 1.4.0",
     ],
 }
 
