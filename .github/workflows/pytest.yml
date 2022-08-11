@@ -111,6 +111,105 @@ jobs:
       run: |
         python -u -m pytest --bandit --black --cov --flake8 --mypy --pylint -m "not slow" --cov-report=term-missing --cov-report=xml
 
+    # CodeQL analysis section START
+    # Linux-only, enable on GitHub for public repos and private repos on Enterprise plan
+    # IMPORTANT setup steps:
+    #   1) If this is a private repo NOT on a GitHub Enterprise plan, disable the last CodeQL result upload step
+    #   2) Check ${{ secrets.CODEQL_UPLOAD_TOKEN }} has been added and updated in the GitHub settings of this repo
+    #   3) Check CodeQL languages for this repo are updated correctly
+    - name: CodeQL languages, comma-separated, for list see https://codeql.github.com/docs/codeql-cli/creating-codeql-databases/
+      if: startsWith(runner.os, 'Linux')
+      run: echo "CODEQL_LANGUAGES=python," >> "$GITHUB_ENV"
+    # CodeQL preprocessing checks commence
+    - name: Current git branch ref
+      if: startsWith(runner.os, 'Linux')
+      run: echo "$GITHUB_REF"
+    - name: Current git commit
+      if: startsWith(runner.os, 'Linux')
+      run: echo $(git rev-parse --verify HEAD)
+    - name: Current repository name
+      if: startsWith(runner.os, 'Linux')
+      run: echo "$GITHUB_REPOSITORY"
+    - name: Find CodeQL files on GitHub Actions runner OS
+      if: startsWith(runner.os, 'Linux')
+      run: echo CODEQL_DIR=$(echo /opt/hostedtoolcache/CodeQL/*/x64/codeql) >> "$GITHUB_ENV"
+    - name: Find CodeQL binary on GitHub Actions runner OS
+      if: startsWith(runner.os, 'Linux')
+      run: |
+        if [ -f $(echo "$CODEQL_DIR"/codeql) ] ;
+        then
+          echo CODEQL_BIN=$(echo "$CODEQL_DIR"/codeql) >> "$GITHUB_ENV" ;
+        else
+          exit 1 ;
+        fi ;
+    - name: Get the codeql version
+      if: startsWith(runner.os, 'Linux')
+      run: |
+        "$CODEQL_BIN" --version
+    - name: Check that the qlpacks exist for specified languages
+      if: startsWith(runner.os, 'Linux')
+      run: |
+        for LANG in $(echo "$CODEQL_LANGUAGES" | tr "," " ") ;
+        do
+          if ! "$CODEQL_BIN" resolve qlpacks | grep -q "$LANG-" ;
+          then
+            exit 1 ;
+          fi ;
+        done ;
+    - name: Check that the codeql queries exist for specified languages
+      if: startsWith(runner.os, 'Linux')
+      run: |
+        for LANG in $(echo "$CODEQL_LANGUAGES" | tr "," " ") ;
+        do
+          if ! ls "$CODEQL_DIR"/qlpacks/codeql/"$LANG"-queries/*.*/codeql-suites/ | grep -q "$LANG-" ;
+          then
+            exit 1 ;
+          fi ;
+        done ;
+    # CodeQL preprocessing checks finish
+    - name: Create codeql database for specified languages
+      if: startsWith(runner.os, 'Linux')
+      run: |
+        "$CODEQL_BIN" database create codeql-result-database/ --db-cluster --language="$CODEQL_LANGUAGES" ;
+    - name: Run codeql analysis on each specified languages
+      if: startsWith(runner.os, 'Linux')
+      run: |
+        for LANG in $(echo "$CODEQL_LANGUAGES" | tr "," " ") ;
+        do
+          "$CODEQL_BIN" database analyze codeql-result-database/"$LANG"/ --sarif-category="$LANG" --output=out-"$LANG".sarif --format=sarif-latest --threads=0 ;
+        done ;
+    - name: Upload codeql results to public GitHub repo or private repo on an enterprise plan
+      if: startsWith(runner.os, 'Linux')
+      run: |
+        echo "$CODEQL_TOKEN" |
+        for SARIF in $(ls out-*.sarif) ;
+        do
+          "$CODEQL_BIN" github upload-results --commit=$(git rev-parse --verify HEAD) --ref="$GITHUB_REF" --repository="$GITHUB_REPOSITORY" --sarif="$SARIF" --github-auth-stdin ;
+        done ;
+      env:
+        CODEQL_TOKEN: ${{ secrets.CODEQL_UPLOAD_TOKEN }}
+    # We should search through grep after trying to upload, if applicable
+    # grep returns exit code 1 if string is not found but specified file is present
+    # grep returns exit code 2 if specified file is not present
+    - name: Look for startLine to see if any issues are found, if so, return exit code 1
+      if: startsWith(runner.os, 'Linux')
+      run: |
+        for OUT_FILE in $(ls out-*.sarif) ;
+          do
+            if ! (
+              grep --context=11 startLine "$OUT_FILE" ;
+              EXIT_CODE=$? ;
+              if [ "$EXIT_CODE" -eq 0 ] ;
+              then
+                exit 1;
+              fi ;
+            ) ;
+            then
+              exit 1 ;
+            fi ;
+          done ;
+    # CodeQL analysis section END
+
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       continue-on-error: true  # codecov limits number of uploads allowed for each commit
