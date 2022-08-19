@@ -112,9 +112,9 @@ jobs:
         python -u -m pytest --bandit --black --cov --flake8 --mypy --pylint -m "not slow" --cov-report=term-missing --cov-report=xml
 
     # CodeQL analysis section START
-    # Linux-only, enable on GitHub for public repos and private repos on Enterprise plan
+    # Linux-only, enable on GitHub for public repos and private repos on Enterprise plan with Advanced Security
     # IMPORTANT setup steps:
-    #   1) If this is a private repo NOT on a GitHub Enterprise plan, disable the last CodeQL result upload step
+    #   1) If this is a private repo NOT on a GitHub Enterprise plan with Advanced Security, disable the last CodeQL result upload step
     #   2) Check ${{ secrets.CODEQL_UPLOAD_TOKEN }} has been added and updated in the GitHub settings of this repo
     #   3) Check CodeQL languages for this repo are updated correctly
     - name: CodeQL languages, comma-separated, for list see https://codeql.github.com/docs/codeql-cli/creating-codeql-databases/
@@ -178,7 +178,7 @@ jobs:
         do
           "$CODEQL_BIN" database analyze codeql-result-database/"$LANG"/ --sarif-category="$LANG" --output=out-"$LANG".sarif --format=sarif-latest --threads=0 ;
         done ;
-    - name: Upload codeql results to public GitHub repo or private repo on an enterprise plan
+    - name: Upload codeql results to public GitHub repo or private repo on an enterprise plan with Advanced Security
       if: startsWith(runner.os, 'Linux')
       run: |
         echo "$CODEQL_TOKEN" |
