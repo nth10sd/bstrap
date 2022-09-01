@@ -14,6 +14,7 @@ MODULE_NAME = "bstrap"
 INIT_FILE = "__init__.py"
 VERSION_INDICATOR = "__version__"  # This sets the version in INIT_FILE
 
+MODULE_VER = ""
 with open(
     (Path(MODULE_NAME) / INIT_FILE).expanduser().resolve(),
     encoding="utf-8",
