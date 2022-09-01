@@ -31,7 +31,7 @@ with open(
 EXTRAS = {
     "test": [
         "bandit ~= 1.7.0",
-        "black ~= 22.6.0",
+        "black ~= 22.8.0",
         "coverage[toml] ~= 6.4.1",
         "flake8 ~= 4.0.1",
         "flake8-bugbear ~= 22.8.22",
