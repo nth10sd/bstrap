@@ -52,6 +52,7 @@ EXTRAS = {
         "mypy==0.971",
         "pep8-naming ~= 0.13.0",
         "pylint ~= 2.15.0",
+        "pyright==1.1.269",
         "pytest ~= 7.1.2",
         "pytest-bandit ~= 0.6.1",
         "pytest-black ~= 0.3.12",

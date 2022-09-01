@@ -140,6 +140,14 @@ score = "no"
 # This should be equal to the min supported Python version of the project
 py-version = "3.10"
 
+[tool.pyright]
+exclude = [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*",
+    "build/",
+]
+
 [tool.pytest.ini_options]
 addopts = "-n auto --pylint-error-types=CRWEFI --durations=7 --no-cov-on-fail"
 bandit_recurse = true
