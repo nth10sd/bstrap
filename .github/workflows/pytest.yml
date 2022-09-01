@@ -214,6 +214,7 @@ jobs:
       uses: codecov/codecov-action@v2
       continue-on-error: true  # codecov limits number of uploads allowed for each commit
       with:
+        # token: ${{ secrets.CODECOV_TOKEN }}
         env_vars: OS,PYTHON
         fail_ci_if_error: true  # optional (default = false)
         verbose: true
