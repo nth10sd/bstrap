@@ -107,6 +107,9 @@ jobs:
     - name: Ensure Sphinx docs always work, resetting Git repo after generation
       if: startsWith(runner.os, 'Linux')
       run: pushd docs/ && ./gen-sphinx-html.sh ; git clean -fd ; popd
+    - name: Run pytype
+      if: startsWith(runner.os, 'Linux')
+      run: python -u -m pytype --config=pytype.cfg
     - name: Run tools using pytest, and also non-slow tests under code coverage
       run: |
         python -u -m pytest --bandit --black --cov --flake8 --mypy --pylint -m "not slow" --cov-report=term-missing --cov-report=xml

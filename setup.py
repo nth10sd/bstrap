@@ -62,6 +62,7 @@ EXTRAS = {
         "pytest-pylint ~= 0.18.0",
         "pytest-randomly ~= 3.12.0",
         "pytest-xdist ~= 2.5.0",
+        "pytype==2022.8.30",
         "pyupgrade-directories ~= 0.2.0",
         "semgrep ~= 0.111.0",
         "sphinx ~= 5.1.1",
