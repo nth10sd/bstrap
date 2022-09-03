@@ -80,28 +80,28 @@ jobs:
                     | cut -d" " -f1) -lt 8 ] ;
         then exit 0 ; else exit 1 ; fi ;
 
-      # - name: Use deploy key
-      #   uses: webfactory/ssh-agent@v0.5.4
-      #   with:
-      #       ssh-private-key: ${{ secrets.ZZBASE_TOKEN }}
-      - name: Install pip prerequisites
-        if: steps.pip-cache.outputs.cache-hit != 'true'
-        run: python -u -m pip install --upgrade pip setuptools wheel ;
-      - name: Removing subdomain to make requirements.txt setup work in CI (POSIX-only)
-        if: steps.pip-cache.outputs.cache-hit != 'true' && (startsWith(runner.os, 'Linux') || startsWith(runner.os, 'macOS'))
-        run: python -c 'import fileinput; [print(line.partition("git@")[0] + "git@github.com/" + line.partition(".github.com/")[-1] if (".github.com/" in line and not line.startswith("#")) else line, end="") for line in fileinput.input(inplace=True)]' requirements.txt ; git diff ;
-      - name: Removing subdomain to make requirements.txt setup work in CI (Windows-only)
-        if: steps.pip-cache.outputs.cache-hit != 'true' && startsWith(runner.os, 'Windows')
-        run: python -c 'import fileinput; [print(line.partition(\"git@\")[0] + \"git@github.com/\" + line.partition(\".github.com/\")[-1] if (\".github.com/\" in line and not line.startswith(\"#\")) else line, end=\"\") for line in fileinput.input(inplace=True)]' requirements.txt ; git diff ;
-      - name: Install requirements from possibly-changed requirements.txt
-        if: steps.pip-cache.outputs.cache-hit != 'true'
-        run: pip install -r requirements.txt ;
-      - name: Revert requirements.txt if changed
-        if: steps.pip-cache.outputs.cache-hit != 'true'
-        run: git checkout -- requirements.txt ;
-      - name: Install package in development mode
-        if: steps.pip-cache.outputs.cache-hit != 'true'
-        run: pip install --upgrade -e . ;
+    # - name: Use deploy key
+    #   uses: webfactory/ssh-agent@v0.5.4
+    #   with:
+    #       ssh-private-key: ${{ secrets.ZZBASE_TOKEN }}
+    - name: Install pip prerequisites
+      if: steps.pip-cache.outputs.cache-hit != 'true'
+      run: python -u -m pip install --upgrade pip setuptools wheel ;
+    - name: Removing subdomain to make requirements.txt setup work in CI (POSIX-only)
+      if: steps.pip-cache.outputs.cache-hit != 'true' && (startsWith(runner.os, 'Linux') || startsWith(runner.os, 'macOS'))
+      run: python -c 'import fileinput; [print(line.partition("git@")[0] + "git@github.com/" + line.partition(".github.com/")[-1] if (".github.com/" in line and not line.startswith("#")) else line, end="") for line in fileinput.input(inplace=True)]' requirements.txt ; git diff ;
+    - name: Removing subdomain to make requirements.txt setup work in CI (Windows-only)
+      if: steps.pip-cache.outputs.cache-hit != 'true' && startsWith(runner.os, 'Windows')
+      run: python -c 'import fileinput; [print(line.partition(\"git@\")[0] + \"git@github.com/\" + line.partition(\".github.com/\")[-1] if (\".github.com/\" in line and not line.startswith(\"#\")) else line, end=\"\") for line in fileinput.input(inplace=True)]' requirements.txt ; git diff ;
+    - name: Install requirements from possibly-changed requirements.txt
+      if: steps.pip-cache.outputs.cache-hit != 'true'
+      run: pip install -r requirements.txt ;
+    - name: Revert requirements.txt if changed
+      if: steps.pip-cache.outputs.cache-hit != 'true'
+      run: git checkout -- requirements.txt ;
+    - name: Install package in development mode
+      if: steps.pip-cache.outputs.cache-hit != 'true'
+      run: pip install --upgrade -e . ;
 
     - name: Run with flake8 only checking for Python syntax errors or undefined names
       run: |
