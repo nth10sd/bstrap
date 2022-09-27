@@ -50,7 +50,7 @@ EXTRAS = {
         "flake8-typing-imports ~= 1.12.0",
         "flynt ~= 0.76",
         "isort ~= 5.10.1",
-        "mypy==0.971",
+        "mypy==0.981",
         "pep8-naming ~= 0.13.0",
         "pylint ~= 2.15.0",
         'pyright==1.1.269; platform_system == "Linux"',
@@ -66,10 +66,10 @@ EXTRAS = {
         "pytest-xdist ~= 2.5.0",
         'pytype==2022.8.30; platform_system == "Linux"',
         "pyupgrade-directories ~= 0.2.0",
-        "semgrep ~= 0.112.1",
+        "semgrep ~= 0.114.0",
         "sphinx ~= 5.1.1",
         "tryceratops ~= 1.1.0",
-        "vulture ~= 2.5",
+        "vulture ~= 2.6",
         "yesqa ~= 1.4.0",
     ],
 }
@@ -94,8 +94,8 @@ setup(
     },
     install_requires=[  # Include relevant types-* package, e.g. types-toml & toml
         "setuptools >= 60.0.5",
-        "types-setuptools==63.2.0",  # Bump types-* only with mypy
-        "types-toml==0.10.7",  # For (temp) infrastructure stuff of some packages
+        "types-setuptools==65.3.0",  # Bump types-* only with mypy
+        "types-toml==0.10.8",  # For (temp) infrastructure stuff of some packages
         "wheel >= 0.37.0",
     ],
     extras_require=EXTRAS,
