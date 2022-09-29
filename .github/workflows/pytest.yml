@@ -117,7 +117,7 @@ jobs:
       run: python -u -m pyupgrade_directories --py310-plus --recursive .
     - name: Run with refurb to find code that can be written in a more modern way
       if: startsWith(runner.os, 'Linux') || startsWith(runner.os, 'macOS')
-      run: python -u -m refurb $(python -c "import subprocess; out = subprocess.run([\"rg\", \"MODULE_NAME =\", \"setup.py\"], capture_output=True).stdout.decode(\"utf-8\"); print(out.split(\" = \\\"\", maxsplit=1)[-1].rstrip().removesuffix(\"\\\"\") + \"/\")")
+      run: pushd $(python -c "import subprocess; out = subprocess.run([\"rg\", \"MODULE_NAME =\", \"setup.py\"], capture_output=True).stdout.decode(\"utf-8\"); print(out.split(\" = \\\"\", maxsplit=1)[-1].rstrip().removesuffix(\"\\\"\") + \"/\")") && python -u -m refurb . || true && popd && if [ -d tests/ ] ; then pushd tests/ && python -u -m refurb . || true && popd ; fi
     - name: Run with semgrep to find potential security issues with ERROR level
       if: startsWith(runner.os, 'Linux')
       run: python -u -m semgrep scan --severity=ERROR --strict --error --config auto
