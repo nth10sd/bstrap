@@ -109,15 +109,18 @@ jobs:
         python -u -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
     - name: Run with yesqa to find obsolete flake8 ignores
       if: startsWith(runner.os, 'Linux')
-      run: find . -type f -name "*.py" -not -path "./build/*" | xargs yesqa
+      run: rg -t py --files | xargs python -u -m yesqa
     - name: Run with flynt to find old-style formatting strings that can be converted to f-strings
       if: startsWith(runner.os, 'Linux')
-      run: flynt --dry-run --fail-on-change --transform-concats .
+      run: python -u -m flynt --dry-run --fail-on-change --transform-concats .
     - name: Run with pyupgrade to find code that can be written in a more modern way
-      run: pyup_dirs --py310-plus --recursive .
+      run: python -u -m pyupgrade_directories --py310-plus --recursive .
+    - name: Run with refurb to find code that can be written in a more modern way
+      if: startsWith(runner.os, 'Linux') || startsWith(runner.os, 'macOS')
+      run: python -u -m refurb $(python -c "import subprocess; out = subprocess.run([\"rg\", \"MODULE_NAME =\", \"setup.py\"], capture_output=True).stdout.decode(\"utf-8\"); print(out.split(\" = \\\"\", maxsplit=1)[-1].rstrip().removesuffix(\"\\\"\") + \"/\")")
     - name: Run with semgrep to find potential security issues with ERROR level
       if: startsWith(runner.os, 'Linux')
-      run: semgrep scan --severity=ERROR --strict --error --config auto
+      run: python -u -m semgrep scan --severity=ERROR --strict --error --config auto
     - name: Run with vulture to find dead code
       if: startsWith(runner.os, 'Linux') || startsWith(runner.os, 'macOS')
       run: python -u -m vulture $(python -c "import subprocess; out = subprocess.run([\"rg\", \"MODULE_NAME =\", \"setup.py\"], capture_output=True).stdout.decode(\"utf-8\"); print(out.split(\" = \\\"\", maxsplit=1)[-1].rstrip().removesuffix(\"\\\"\") + \"/\")") tests/ .vulture_allowlist

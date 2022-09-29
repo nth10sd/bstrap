@@ -164,3 +164,8 @@ markers = [
 ignore = [
     "TC003",
 ]
+
+[tool.refurb]
+ignore = [
+    "110",
+]
