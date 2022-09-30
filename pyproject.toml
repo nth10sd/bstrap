@@ -160,12 +160,12 @@ markers = [
     "slow",
 ]
 
-[tool.tryceratops]
-ignore = [
-    "TC003",
-]
-
 [tool.refurb]
 ignore = [
     "110",
+]
+
+[tool.tryceratops]
+ignore = [
+    "TC003",
 ]
