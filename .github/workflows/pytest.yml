@@ -11,7 +11,7 @@ on:
 jobs:
   build:
 
-    runs-on: ${{ matrix.operating-system }}
+    # runs-on: ${{ matrix.operating-system }}
     # Fixate to exact OS versions to avoid potential test failures over time
     # Uncomment this line if we are running on a solitary OS
     runs-on: ubuntu-latest
