@@ -81,7 +81,7 @@ jobs:
         then exit 0 ; else exit 1 ; fi ;
 
     # - name: Use deploy key
-    #   uses: webfactory/ssh-agent@v0.5.4
+    #   uses: webfactory/ssh-agent@v0.7.0
     #   with:
     #       ssh-private-key: ${{ secrets.ZZBASE_TOKEN }}
     - name: Install pip prerequisites
