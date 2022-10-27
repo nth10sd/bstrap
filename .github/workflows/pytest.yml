@@ -29,35 +29,26 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     # pip cache dependencies to save time
-    - uses: actions/cache@v3
-      if: startsWith(runner.os, 'Linux')
+    - name: Get pip cache dir
+      if: startsWith(runner.os, 'Linux') || startsWith(runner.os, 'macOS')
+      id: pip-cache
+      run: echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
+    - name: pip cache
+      uses: actions/cache@v3
+      if: startsWith(runner.os, 'Linux') || startsWith(runner.os, 'macOS')
       with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-    - uses: actions/cache@v3
-      if: startsWith(runner.os, 'macOS')
-      with:
-        path: ~/Library/Caches/pip
+        path: ${{ steps.pip-cache.outputs.dir }}
         key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
         restore-keys: |
           ${{ runner.os }}-pip-
     - uses: actions/cache@v3
       if: startsWith(runner.os, 'Windows')
       with:
+        # 20221026 This only worked w/set-output in the pip cache dir step on Win
+        # Make pip-cache step above workable for all 3 OS'es if using the line below to
+        # see if things still work
+        # path: ${{ steps.pip-cache.outputs.dir }}
         path: ~\AppData\Local\pip\Cache
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-    - name: Get pip cache dir
-      id: pip-cache
-      run: |
-        echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
-    - name: pip cache
-      uses: actions/cache@v3
-      with:
-        path: ${{ steps.pip-cache.outputs.dir }}
         key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
         restore-keys: |
           ${{ runner.os }}-pip-
