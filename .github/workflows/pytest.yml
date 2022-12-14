@@ -97,6 +97,9 @@ jobs:
         run: |
           # stop the build if there are Python syntax errors or undefined names
           python -u -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+      - name: Run shellcheck
+        if: startsWith(runner.os, 'Linux')
+        run: rg -t sh --files | xargs shellcheck
       - name: Run with yesqa to find obsolete flake8 ignores
         if: startsWith(runner.os, 'Linux')
         run: rg -t py --files | xargs python -u -m yesqa
