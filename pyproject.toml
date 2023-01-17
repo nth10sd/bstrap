@@ -162,6 +162,18 @@ markers = [
     "slow",
 ]
 
+[tool.pytype]
+inputs = [
+    ".",
+]
+exclude = [
+    "build/",
+]
+jobs = "auto"
+keep_going = "True"
+platform = "linux"
+python_version = "3.10"
+
 [tool.refurb]
 ignore = [
     "110",

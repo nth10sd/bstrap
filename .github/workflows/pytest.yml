@@ -125,7 +125,7 @@ jobs:
         run: python -u -m pyright
       - name: Run pytype
         if: startsWith(runner.os, 'Linux')
-        run: python -u -m pytype --config=pytype.cfg
+        run: python -u -m pytype
       - name: Run tools using pytest
         run: |
           python -u -m pytest --bandit --black --cov --flake8 --mypy --pylint

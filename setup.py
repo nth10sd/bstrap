@@ -64,7 +64,7 @@ EXTRAS = {
         "pytest-pylint ~= 0.19.0",
         "pytest-randomly ~= 3.12.0",
         "pytest-xdist ~= 3.1.0",
-        'pytype==2022.12.15; platform_system == "Linux"',
+        'pytype==2023.1.10; platform_system == "Linux"',
         "pyupgrade-directories ~= 0.3.0",
         "refurb ~= 1.9.0",
         "semgrep ~= 1.3.0",
