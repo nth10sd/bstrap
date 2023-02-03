@@ -151,7 +151,7 @@ jobs:
         run: echo "$GITHUB_REPOSITORY"
       - name: Find CodeQL files on GitHub Actions runner OS
         if: startsWith(runner.os, 'Linux')
-        run: echo CODEQL_DIR=$(echo /opt/hostedtoolcache/CodeQL/*/x64/codeql) >> "$GITHUB_ENV"
+        run: pushd /opt/hostedtoolcache/CodeQL/ || exit ; export CODEQL_VER=( * ) ; echo CODEQL_DIR="/opt/hostedtoolcache/CodeQL/${CODEQL_VER[-1]}/x64/codeql" >> "$GITHUB_ENV" ; popd || exit ;
       - name: Find CodeQL binary on GitHub Actions runner OS
         if: startsWith(runner.os, 'Linux')
         run: |
