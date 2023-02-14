@@ -50,7 +50,7 @@ EXTRAS = {
         "flake8-typing-imports ~= 1.12.0",
         "flynt ~= 0.77",
         "isort ~= 5.11.3",
-        "mypy==0.991",
+        "mypy ~= 1.0.0",
         "pep8-naming ~= 0.13.0",
         "pylint ~= 2.16.1",
         'pyright==1.1.287; platform_system == "Linux"',
@@ -95,8 +95,8 @@ setup(
     },
     install_requires=[
         "setuptools >= 65.6.3",
-        "types-setuptools==65.6.0.3",  # Bump types-* only with mypy
-        'types-toml==0.10.8; python_version <= "3.10"',
+        "types-setuptools==67.2.0.1",  # Bump types-* only with mypy
+        'types-toml==0.10.8.3; python_version <= "3.10"',
         "wheel >= 0.38.4",
     ],
     extras_require=EXTRAS,
