@@ -28,7 +28,7 @@ def get_logger(
     # By using sys.stdout, stdout on console output should have both stdout & stderr
     handler = logging.StreamHandler(sys.stdout)
     # See https://github.com/python/mypy/issues/2427
-    handler.flush = sys.stdout.flush  # type: ignore[assignment]
+    handler.flush = sys.stdout.flush  # type: ignore[method-assign]
     handler.terminator = terminator
     handler.setFormatter(logging.Formatter(fmt=fmt, datefmt="%b %d %H:%M:%S"))
 
