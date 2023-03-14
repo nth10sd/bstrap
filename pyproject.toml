@@ -165,6 +165,7 @@ bandit_targets = "bstrap"
 markers = [
     "slow",
 ]
+xfail_strict = true
 
 [tool.pytype]
 inputs = [
