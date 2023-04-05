@@ -15,8 +15,7 @@ INIT_FILE = "__init__.py"
 VERSION_INDICATOR = "__version__"  # This sets the version in INIT_FILE
 
 MODULE_VER = ""
-with open(
-    (Path(MODULE_NAME) / INIT_FILE).expanduser().resolve(),
+with (Path(MODULE_NAME) / INIT_FILE).expanduser().resolve().open(
     encoding="utf-8",
     errors="surrogateescape",
 ) as f:  # Look in module's __init__ for __version__
