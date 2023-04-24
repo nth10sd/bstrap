@@ -33,7 +33,7 @@ EXTRAS = {
         "bandit ~= 1.7.5",
         "black ~= 23.3.0",
         "coverage[toml] ~= 7.2.3",  # [toml] not needed on Python 3.11+
-        "dlint ~= 0.14.0",
+        "dlint ~= 0.14.1",
         "flake8 ~= 4.0.1",
         "flake8-boolean-trap ~= 1.0.0",
         "flake8-bugbear ~= 23.3.12",
@@ -60,7 +60,7 @@ EXTRAS = {
         "pep8-naming ~= 0.13.0",
         "pylint ~= 2.17.0",
         'pyright==1.1.298; platform_system == "Linux"',
-        "pytest ~= 7.2.0",
+        "pytest ~= 7.3.0",
         "pytest-bandit ~= 0.6.1",
         "pytest-black ~= 0.3.12",
         "pytest-cov ~= 4.0.0",
