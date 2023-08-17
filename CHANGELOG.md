@@ -1,3 +1,15 @@
+# 1.2.0 (2023-08-17)
+
+Checkpoint release prior to upcoming 2.x release.
+
+1. Bump to Python 3.10 as a minimum version for new projects
+1. More tools and linters added, versions bumped
+1. GitHub Actions workflow tweaks
+1. Do not propagate logger message to root logger, if it is present
+1. Set `mypy` strict flag to true
+1. Ensure generating Sphinx documentation always works, especially via GitHub Actions
+1. Continue even though codecov errors out primarily because codecov limits the number of uploads allowed for each commit, even if scheduled
+
 # 1.1.0 (2021-05-22)
 
 1. Bump to Python 3.9 as a minimum version for new projects
